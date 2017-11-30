@@ -1,0 +1,110 @@
+
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+  <title>编辑流程</title>
+  <meta charset="utf-8" />
+<!--
+<link rel="stylesheet" type="text/css" href="styles.css">
+-->
+
+<script src="../dwr/interface/workflowAjax.js" type="text/javascript"></script>
+<script src="../dwr/interface/formInfoAjax.js" type="text/javascript"></script>
+<script src="../dwr/engine.js" type="text/javascript"></script>
+<script type="text/javascript" src="../workflow/js/XMLDocument.js"/></script>
+<script type="text/javascript" src="../workflow/js/prototype.js"/></script>
+<link rel="stylesheet" type="text/css" href="../workflow/js/ext/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../workflow/wfd/workflow.css" />
+<script type="text/javascript" src="../workflow/js/ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="../workflow/js/ext/ext-all.js"></script>
+<script type="text/javascript" src="../workflow/js/ExtExpansion.js"></script>
+<script type="text/javascript" src="../workflow/wfd/WorkflowConstants.js"></script>
+<script type="text/javascript" src="../workflow/wfd/processXml.js"></script>
+<script type="text/javascript" src="../workflow/wfd/component/Button.js"></script>
+<script type="text/javascript" src="../workflow/wfd/component/Components.js"></script>
+<script type="text/javascript" src="../workflow/wfd/Wrapper.js"></script>
+<script type="text/javascript" src="../workflow/wfd/ctrl/controller.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/model.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/WFDModel.js"></script>
+<script type="text/javascript" src="../workflow/wfd/StateMonitor.js"></script>
+<script type="text/javascript" src="../workflow/wfd/ctrl/SaveValidateListener.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/NormalActivity.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/StartActivity.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/EndActivity.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/Transition.js"></script>
+<script type="text/javascript" src="../workflow/wfd/model/NoteModel.js"></script>
+<script type="text/javascript" src="../workflow/wfd/attributeWin.js"></script>
+<script type="text/javascript" src="../workflow/wfd/main.js"></script>
+<STYLE>
+v\:* {Behavior: url(#default#VML)}
+</STYLE>
+<script type="text/javascript">
+if(document.documentMode && document.documentMode==8){
+	document.namespaces.add("v","urn:schemas-microsoft-com:vml","#default#VML"); 
+}
+
+if ((typeof Range !== "undefined") && !Range.prototype.createContextualFragment){
+	Range.prototype.createContextualFragment = function(html){
+        var frag = document.createDocumentFragment(), 
+        div = document.createElement("div");
+        frag.appendChild(div);
+        div.outerHTML = html;
+        return frag;
+    };
+}
+</script> 
+<script>
+ window.onload=function(){//页面加载后执行的函数 
+	Ext.onReady(function(){
+		Ext.QuickTips.init();
+	
+		var wfd = new WFD(Workflow.EDITING);
+		var model = new WFDModel();
+		model.setId($F('templateId'));
+		model.setAuthor('ff8080814032672601403caf34db40ac');
+		model.setOrgId('ff8080813c4c2750013c4cd35b6d0482');
+		model.setOrder("1");
+		model.setTemplateOrgId("ff8080813c4c2750013c4cd35b6d0482");
+		model.setIsAdmin("");
+		model.setWtType("00A");
+		
+		var xmlDoc = XMLDocument.loadXML($F('workflowXml'))
+		wfd.loadWFD( model, xmlDoc);
+	
+		document.body.onunload = function () {
+	       	model = null;
+	        wfd = null;
+	        window.opener.select_unmask();
+	    };
+		document.body.onbeforeunload = function () {
+	        if (model.getWrapper().isChanged()) {
+	            window.event.returnValue = "您对工作流程图的编辑尚未保存，离开该页面将退出系统!";
+	        }
+	    };
+	    
+	    document.title = "编辑流程:【测试】";
+	});
+}
+</script>
+</head>
+<body>
+<!-- <div id="header">流程设计器</div>-->
+<div id="formCtrlDiv"></div>
+<div id="attributeWin"></div>
+
+<form id="saveForm" name="saveForm">
+	<input type="hidden" id="workflowXml" name="workflowXml" value='<WorkflowProcess name="测试" createTime="2017-03-10 23:05:08" description="" type="00C"
+	mainHandler="" docType="00B" docClassify="" form="808080805ab5e793015ab8be111d0aa3" template="doc" order="1" orgId="ff8080813c4c2750013c4cd35b6d0482"
+	author="ff8080813c4c2750013c4cd384290598"><ActivitieSet><StartActivity activityCode="0" activityName="开始" startType="00A" splitType="AND"
+	state="" x="50" y="50"><Timer startType="00B"><Schedule dateTime="2017-03-10 00:00"/>
+	</Timer><ActionSet><Action type="00A" name="消息提醒" value="00A"/><Action type="00A" name="消息提醒" value="00B"/>
+	</ActionSet><FormCtrl><Field id="CONTENT" right="MODIFY"/><Field id="ATTACHMENT" right="MODIFY"/><Field id="序号" right="MODIFY"/><Field id="时间" right="MODIFY"/>
+	<Field id="日期" right="MODIFY"/><Field id="CREATE_DATE_CN" right="MODIFY"/><Field id="共计" right="MODIFY"/><Field id="开始" right="MODIFY"/><Field id="代理商名称" right="MODIFY"/>
+	<Field id="结束" right="MODIFY"/><Field id="代理商联系电话" right="MODIFY"/>
+	<Field id="代理商联系人" right="MODIFY"/><Field id="代理商所属单位" right="MODIFY"/><Field id="客户标识" right="MODIFY"/><Field id="客户联系人" right="MODIFY"/><Field id="客户背景及项目情况 " right="MODIFY"/><Field id="固网语音" right="MODIFY"/><Field id="移动无线" right="MODIFY"/><Field id="数据专线及互联网" right="MODIFY"/><Field id="其它" right="MODIFY"/><Field id="代理销售商机线数收入产品等信息描述" right="MODIFY"/><Field id="代理上报的商机销售理由" right="MODIFY"/><Field id="是否引入代理渠道受理业务" right="MODIFY"/><Field id="是否引入代理渠道进行业务受理理由" right="MODIFY"/><Field id="突破公司现有标准" right="MODIFY"/><Field id="不突破公司现有标准" right="MODIFY"/><Field id="客户经理" right="MODIFY"/><Field id="客户经理联系方式" right="MODIFY"/><Field id="分管领导审批" right="MODIFY"/></FormCtrl><Participant><PrioritySet/><RealRunners/></Participant><ExpressionCtrl><Expression to="1" formkey="共计" formula="3##小于##共计##小于##5"/><Expression to="7" formkey="共计" formula="1##小于##共计##小于##3"/><Expression to="6" formkey="共计" formula="5##小于##共计##小于##X"/></ExpressionCtrl></StartActivity><EndActivity activityCode="-1" activityName="结束" x="600" y="400"><ActionSet><Action type="00E" name="自动归档"/></ActionSet><ForwardConditionSet><ForwardCondition type="" value="all*${activity}"/></ForwardConditionSet></EndActivity><Activity activityCode="1" activityName="普通2" splitType="AND" state="" canBack="true" canRecycle="true" limit="0" x="184" y="143"><ActionSet><Action type="00A" name="消息提醒" value="00A"/><Action type="00A" name="消息提醒" value="00B"/></ActionSet><TreadSet><Tread activityCode="0" activityName="开始"/></TreadSet><ForwardConditionSet><ForwardCondition type="" value="all*${activity}"/></ForwardConditionSet><BehindConditionSet><BehindCondition type="" value="all*${users}"/></BehindConditionSet><FormCtrl><Field id="CONTENT" right="MODIFY"/><Field id="ATTACHMENT" right="MODIFY"/><Field id="序号" right="MODIFY"/><Field id="时间" right="MODIFY"/><Field id="日期" right="MODIFY"/><Field id="CREATE_DATE_CN" right="MODIFY"/><Field id="共计" right="MODIFY"/><Field id="开始" right="MODIFY"/><Field id="代理商名称" right="MODIFY"/><Field id="结束" right="MODIFY"/><Field id="代理商联系电话" right="MODIFY"/><Field id="代理商联系人" right="MODIFY"/><Field id="代理商所属单位" right="MODIFY"/><Field id="客户标识" right="MODIFY"/><Field id="客户联系人" right="MODIFY"/><Field id="客户背景及项目情况 " right="MODIFY"/><Field id="固网语音" right="MODIFY"/><Field id="移动无线" right="MODIFY"/><Field id="数据专线及互联网" right="MODIFY"/><Field id="其它" right="MODIFY"/><Field id="代理销售商机线数收入产品等信息描述" right="MODIFY"/><Field id="代理上报的商机销售理由" right="MODIFY"/><Field id="是否引入代理渠道受理业务" right="MODIFY"/><Field id="是否引入代理渠道进行业务受理理由" right="MODIFY"/><Field id="突破公司现有标准" right="MODIFY"/><Field id="不突破公司现有标准" right="MODIFY"/><Field id="客户经理" right="MODIFY"/><Field id="客户经理联系方式" right="MODIFY"/><Field id="分管领导审批" right="MODIFY"/></FormCtrl><Participant><PrioritySet/><RealRunners/></Participant><Overdue value="00A"/></Activity><Activity activityCode="2" activityName="普通" splitType="AND" state="" canBack="true" canRecycle="true" limit="0" x="343" y="196"><ActionSet><Action type="00A" name="消息提醒" value="00A"/><Action type="00A" name="消息提醒" value="00B"/></ActionSet><TreadSet><Tread activityCode="1" activityName="普通"/><Tread activityCode="0" activityName="开始"/></TreadSet><ForwardConditionSet><ForwardCondition type="" value="all*${activity}"/></ForwardConditionSet><BehindConditionSet><BehindCondition type="" value="all*${users}"/></BehindConditionSet><FormCtrl><Field id="CONTENT" right="MODIFY"/><Field id="ATTACHMENT" right="MODIFY"/><Field id="序号" right="MODIFY"/><Field id="时间" right="MODIFY"/><Field id="日期" right="MODIFY"/><Field id="CREATE_DATE_CN" right="MODIFY"/><Field id="共计" right="MODIFY"/><Field id="开始" right="MODIFY"/><Field id="代理商名称" right="MODIFY"/><Field id="结束" right="MODIFY"/><Field id="代理商联系电话" right="MODIFY"/><Field id="代理商联系人" right="MODIFY"/><Field id="代理商所属单位" right="MODIFY"/><Field id="客户标识" right="MODIFY"/><Field id="客户联系人" right="MODIFY"/><Field id="客户背景及项目情况 " right="MODIFY"/><Field id="固网语音" right="MODIFY"/><Field id="移动无线" right="MODIFY"/><Field id="数据专线及互联网" right="MODIFY"/><Field id="其它" right="MODIFY"/><Field id="代理销售商机线数收入产品等信息描述" right="MODIFY"/><Field id="代理上报的商机销售理由" right="MODIFY"/><Field id="是否引入代理渠道受理业务" right="MODIFY"/><Field id="是否引入代理渠道进行业务受理理由" right="MODIFY"/><Field id="突破公司现有标准" right="MODIFY"/><Field id="不突破公司现有标准" right="MODIFY"/><Field id="客户经理" right="MODIFY"/><Field id="客户经理联系方式" right="MODIFY"/><Field id="分管领导审批" right="MODIFY"/></FormCtrl><Participant><PrioritySet/><RealRunners/></Participant><Overdue value="00A"/></Activity><Activity activityCode="6" activityName="普通3" splitType="AND" state="" canBack="true" canRecycle="true" limit="0" x="72" y="227"><ActionSet><Action type="00A" name="消息提醒" value="00A"/><Action type="00A" name="消息提醒" value="00B"/></ActionSet><TreadSet><Tread activityCode="0" activityName="开始"/></TreadSet><ForwardConditionSet><ForwardCondition type="" value="all*${activity}"/></ForwardConditionSet><BehindConditionSet><BehindCondition type="" value="all*${users}"/></BehindConditionSet><FormCtrl><Field id="CONTENT" right="MODIFY"/><Field id="ATTACHMENT" right="MODIFY"/><Field id="序号" right="MODIFY"/><Field id="时间" right="MODIFY"/><Field id="日期" right="MODIFY"/><Field id="CREATE_DATE_CN" right="MODIFY"/><Field id="共计" right="MODIFY"/><Field id="开始" right="MODIFY"/><Field id="代理商名称" right="MODIFY"/><Field id="结束" right="MODIFY"/><Field id="代理商联系电话" right="MODIFY"/><Field id="代理商联系人" right="MODIFY"/><Field id="代理商所属单位" right="MODIFY"/><Field id="客户标识" right="MODIFY"/><Field id="客户联系人" right="MODIFY"/><Field id="客户背景及项目情况 " right="MODIFY"/><Field id="固网语音" right="MODIFY"/><Field id="移动无线" right="MODIFY"/><Field id="数据专线及互联网" right="MODIFY"/><Field id="其它" right="MODIFY"/><Field id="代理销售商机线数收入产品等信息描述" right="MODIFY"/><Field id="代理上报的商机销售理由" right="MODIFY"/><Field id="是否引入代理渠道受理业务" right="MODIFY"/><Field id="是否引入代理渠道进行业务受理理由" right="MODIFY"/><Field id="突破公司现有标准" right="MODIFY"/><Field id="不突破公司现有标准" right="MODIFY"/><Field id="客户经理" right="MODIFY"/><Field id="客户经理联系方式" right="MODIFY"/><Field id="分管领导审批" right="MODIFY"/></FormCtrl><Participant><PrioritySet/><RealRunners/></Participant><Overdue value="00A"/></Activity><Activity activityCode="7" activityName="普通1" splitType="AND" state="" canBack="true" canRecycle="true" limit="0" x="265" y="72"><ActionSet><Action type="00A" name="消息提醒" value="00A"/><Action type="00A" name="消息提醒" value="00B"/></ActionSet><TreadSet><Tread activityCode="0" activityName="开始"/></TreadSet><ForwardConditionSet><ForwardCondition type="" value="all*${activity}"/></ForwardConditionSet><BehindConditionSet><BehindCondition type="" value="all*${users}"/></BehindConditionSet><FormCtrl><Field id="CONTENT" right="MODIFY"/><Field id="ATTACHMENT" right="MODIFY"/><Field id="序号" right="MODIFY"/><Field id="时间" right="MODIFY"/><Field id="日期" right="MODIFY"/><Field id="CREATE_DATE_CN" right="MODIFY"/><Field id="共计" right="MODIFY"/><Field id="开始" right="MODIFY"/><Field id="代理商名称" right="MODIFY"/><Field id="结束" right="MODIFY"/><Field id="代理商联系电话" right="MODIFY"/><Field id="代理商联系人" right="MODIFY"/><Field id="代理商所属单位" right="MODIFY"/><Field id="客户标识" right="MODIFY"/><Field id="客户联系人" right="MODIFY"/><Field id="客户背景及项目情况 " right="MODIFY"/><Field id="固网语音" right="MODIFY"/><Field id="移动无线" right="MODIFY"/><Field id="数据专线及互联网" right="MODIFY"/><Field id="其它" right="MODIFY"/><Field id="代理销售商机线数收入产品等信息描述" right="MODIFY"/><Field id="代理上报的商机销售理由" right="MODIFY"/><Field id="是否引入代理渠道受理业务" right="MODIFY"/><Field id="是否引入代理渠道进行业务受理理由" right="MODIFY"/><Field id="突破公司现有标准" right="MODIFY"/><Field id="不突破公司现有标准" right="MODIFY"/><Field id="客户经理" right="MODIFY"/><Field id="客户经理联系方式" right="MODIFY"/><Field id="分管领导审批" right="MODIFY"/></FormCtrl><Participant><PrioritySet/><RealRunners/></Participant><Overdue value="00A"/></Activity></ActivitieSet><TransitionSet><Transition id="5" name="tran_5" from="0" to="1"/><Transition id="6" name="tran_6" from="0" to="7"/><Transition id="7" name="tran_7" from="0" to="6"/><Transition id="8" name="tran_8" from="1" to="2"/><Transition id="9" name="tran_9" from="2" to="-1"/><Transition id="10" name="tran_10" from="6" to="2"/><Transition id="11" name="tran_11" from="7" to="2"/></TransitionSet><NoteSet/></WorkflowProcess>'/>
+	<input type="hidden" id="templateId" name="templateId" value='ff8080815ab5e57c015ab8c0d9b14ead'/>
+	<input type="hidden" id="wtType" name="wtType" value="00A"/>
+</form>
+<input type="hidden" id="isDocRead" value="false"/>
+<input type="hidden" id="templateType" value="00C"/>
+</body>
+</html>
